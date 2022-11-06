@@ -5,7 +5,7 @@ import { addContact } from 'redux/contactsSlice';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { nanoid } from 'nanoid';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { AddButton, Error, FormStyled, Input } from './ContactsForm.styled';
 
 const schema = yup.object().shape({
@@ -18,16 +18,12 @@ const initialValues = {
   name: '',
   number: '',
 };
-// {
-//   addContact;
-// }
+
 export const ContactForm = () => {
   const dispatch = useDispatch();
   const handleSubmit = (values, { resetForm }) => {
     values.id = nanoid();
     dispatch(addContact(values));
-    // addContact(values);
-
     resetForm();
   };
   return (
@@ -63,6 +59,6 @@ export const ContactForm = () => {
   );
 };
 
-ContactForm.propTypes = {
-  addContact: PropTypes.func.isRequired,
-};
+// ContactForm.propTypes = {
+//   addContact: PropTypes.func.isRequired,
+// };

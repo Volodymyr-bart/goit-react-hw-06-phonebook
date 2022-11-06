@@ -1,15 +1,17 @@
 // import { createSlice, nanoid } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 
-const contactsInitialState = [];
-
 const contactsSlice = createSlice({
   name: 'contacts',
-  initialState: contactsInitialState,
+  initialState: {
+    contacts: [],
+    filter: '',
+  },
+
   reducers: {
     addContact: {
       reducer(state, action) {
-        state.push(action.payload);
+        state.contacts.push(action.payload);
       },
       prepare(values) {
         return {
@@ -20,19 +22,17 @@ const contactsSlice = createSlice({
       },
     },
     deleteContact(state, action) {
-      const index = state.findIndex(task => task.id === action.payload);
-      state.splice(index, 1);
+      const index = state.contacts.findIndex(
+        task => task.id === action.payload
+      );
+      state.contacts.splice(index, 1);
     },
-    // toggleCompleted(state, action) {
-    //   for (const task of state) {
-    //     if (task.id === action.payload) {
-    //       task.completed = !task.completed;
-    //       break;
-    //     }
-    //   }
-    // },
+    filterContacts(state, action) {
+      state.filter = action.payload;
+    },
   },
 });
 
-export const { addContact, deleteContact } = contactsSlice.actions;
+export const { addContact, deleteContact, filterContacts } =
+  contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;
