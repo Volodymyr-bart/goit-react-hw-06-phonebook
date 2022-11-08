@@ -6,14 +6,9 @@ export const App = () => {
   return (
     <>
       <h1>Phonebook</h1>
-      <ContactForm
-      // addContact={handleAddContact}
-      />
+      <ContactForm />
       <h2>Contacts</h2>
-      <Filter
-      // value={filter}
-      // onChange={handleFilterChange}
-      />
+      <Filter />
 
       <ContactList
       // contacts={filteredContacts()}
